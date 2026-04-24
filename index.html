@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+
+    <script>
+        function validateForm() {
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+
+            // Check if fields are empty
+            if (email === "" || password === "") {
+                alert("All fields are required!");
+                return false;
+            }
+
+            // Simple email format check
+            let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+            if (!email.match(emailPattern)) {
+                alert("Enter a valid email address!");
+                return false;
+            }
+
+            // Password length check
+            if (password.length < 6) {
+                alert("Password must be at least 6 characters!");
+                return false;
+            }
+
+            return true; // allow form submission
+        }
+    </script>
+</head>
+
+<body>
+    <form action="login.php" method="post" onsubmit="return validateForm()">
+        Email: <input type="email" placeholder="h@gmail.com" name="email" id="email"><br><br>
+        Password: <input type="password" name="password" id="password"><br><br>
+        <input type="submit" value="Login">
+    </form>
+</body>
+</html>
